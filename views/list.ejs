@@ -17,20 +17,27 @@
   </div>
   <div class="box">
     <ul>
-      <%for( var i=0;i<newListItems.length;i++){%>
+      
+      <%newListItems.forEach(function(item){%>
+        <form action="/delete" method="post">
         <div class="item">
-          <input type="checkbox">
-          <p><%=newListItems[i]%></p>
+          <input type="checkbox" name="checkbox" onchange="this.form.submit()" value="<%=item._id%>">
+          <p><%=item.name%></p>
         </div>
-      <%}%>
+      </form>
+      <%})%>
   
     </ul>
     <!-- action is used for route of app.js  -->
   <form class="item"action="/list" method="post">
-    <input type="text" name="newItem" placeholder="New item">
+    <input type="text" name="newItem" placeholder="New item" required>
     <button type="submit" name="button" value=<%=listTitle%>>+</button>
   </form>
   </div>
  
+
+
+
+  
 <!-- this section gone to footer.html  -->
 <%- include("footer") -%>
