@@ -23,6 +23,8 @@
         <div class="item">
           <input type="checkbox" name="checkbox" onchange="this.form.submit()" value="<%=item._id%>">
           <p><%=item.name%></p>
+          <!-- it not shown on browser -->
+          <input type="hidden" name="listName" value="<%=listTitle%>">
         </div>
       </form>
       <%})%>
@@ -31,7 +33,7 @@
     <!-- action is used for route of app.js  -->
   <form class="item"action="/list" method="post">
     <input type="text" name="newItem" placeholder="New item" required>
-    <button type="submit" name="button" value=<%=listTitle%>>+</button>
+    <button type="submit" name="list" value=<%=listTitle%>>+</button>
   </form>
   </div>
  
