@@ -17,7 +17,7 @@ const mongoose = require("mongoose");
 incoming request bodies in a URL-encoded format. It is used to extract the form data from the
 request body and make it available in `req.body` object. */
 app.use(bodyParser.urlencoded({ extended: true })); //for using body parser must add thid line
-app.use("/public", express.static("public")); //you must write this line for using css file and add css file in public folder
+app.use(express.static("public")); //you must write this line for using css file and add css file in public folder
 //for using ejs,you must add all ejs file in views directory
 /* `app.set("view engine", "ejs");` is setting the view engine for the Node.js application to EJS
 (Embedded JavaScript). This means that the application will use EJS to render dynamic HTML pages.
