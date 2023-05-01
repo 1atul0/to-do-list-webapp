@@ -4,6 +4,7 @@ const bodyParser = require("body-parser"); //for getting data from post method o
 const date = require(__dirname + "/date.js");
 const ejs=require("ejs");
 const _ = require("lodash"); //for making kebabcash words
+const private=require(__dirname+"/private.js");
 // console.log(date);it simply show function name
 // console.log(date())//it calle the function written in date.js
 /* These lines of code are importing necessary modules for the Node.js application. The `express`
@@ -31,8 +32,9 @@ perform database operations. The `useNewUrlParser` and `useUnifiedTopology` opti
 avoid deprecation warnings. The `then()` method is used to log a message to the console if the
 connection is successful, and the `catch()` method is used to log an error message to the console if
 the connection fails. */
+const password=private.password;
  mongoose
-  .connect("mongodb+srv://919atul:atul2002@cluster0.iz4lpfy.mongodb.net/todolistDB", {
+  .connect(`mongodb+srv://919atul:${password}@cluster0.iz4lpfy.mongodb.net/todolistDB`, {
   serverSelectionTimeoutMS:30000,
   connectTimeoutMS:30000,  
   useNewUrlParser: true,
