@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="public/styles.css">
+</head>
+<body><!-- this section gone to header.ejs  -->
+    <!-- <h1>It's a !</h1> -->
+  <!-- //this is ejs template  value is taken from app.js -->
+  <!-- if want to use js in ejs file then you have to every line of js code 
+  under a syntax like this  -->
+  <!-- i cannot write actual syntax of ejs no output becuase it cause error in also
+  in comment code -->
+
+
+
+
+  <div class="box" id="heading">
+
+    <!-- value come from app.js in kindofday -->
+    <h1>Today</h1>
+  </div>
+  <div class="box">
+    <ul>
+      
+      
+  
+    </ul>
+    <!-- action is used for route of app.js  -->
+  <form class="item"action="/list" method="post">
+    <input type="text" name="newItem" placeholder="New item" required>
+    <button type="submit" name="list" value=Today>+</button>
+  </form>
+  </div>
+ 
+
+
+
+  
+<!-- this section gone to footer.html  -->
+
+<footer>
+  Copyright 2023 @Atul kumar
+</footer>
+
+</body>
+</html>

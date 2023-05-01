@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser"); //for getting data from post method of html form
 const date = require(__dirname + "/date.js");
+const ejs=require("ejs");
 const _ = require("lodash"); //for making kebabcash words
 // console.log(date);it simply show function name
 // console.log(date())//it calle the function written in date.js
@@ -17,7 +18,11 @@ incoming request bodies in a URL-encoded format. It is used to extract the form 
 request body and make it available in `req.body` object. */
 app.use(bodyParser.urlencoded({ extended: true })); //for using body parser must add thid line
 app.use("/public", express.static("public")); //you must write this line for using css file and add css file in public folder
-
+//for using ejs,you must add all ejs file in views directory
+/* `app.set("view engine", "ejs");` is setting the view engine for the Node.js application to EJS
+(Embedded JavaScript). This means that the application will use EJS to render dynamic HTML pages.
+The `view engine` setting is used by the `res.render()` method to render the EJS templates. */
+app.set("view engine", "ejs");
 //for the adding mongoose database in server
 //make connection to database
 /* This code is connecting the Node.js application to a MongoDB database named "todolistDB" running on
@@ -26,9 +31,11 @@ perform database operations. The `useNewUrlParser` and `useUnifiedTopology` opti
 avoid deprecation warnings. The `then()` method is used to log a message to the console if the
 connection is successful, and the `catch()` method is used to log an error message to the console if
 the connection fails. */
-mongoose
-  .connect("mongodb://localhost:27017/todolistDB", {
-    useNewUrlParser: true,
+ mongoose
+  .connect("mongodb+srv://919atul:atul2002@cluster0.iz4lpfy.mongodb.net/todolistDB", {
+  serverSelectionTimeoutMS:30000,
+  connectTimeoutMS:30000,  
+  useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("connected to database"))
@@ -79,16 +86,12 @@ const listSchema = new mongoose.Schema({
 //making model for custom route listname
 const List = mongoose.model("List", listSchema);
 
-//for using ejs,you must add all ejs file in views directory
-/* `app.set("view engine", "ejs");` is setting the view engine for the Node.js application to EJS
-(Embedded JavaScript). This means that the application will use EJS to render dynamic HTML pages.
-The `view engine` setting is used by the `res.render()` method to render the EJS templates. */
-app.set("view engine", "ejs");
+
 
 app.get("/", function (req, res) {
   let day = date.getDate();
   //find data from todolistDB
-  Item.find()
+   Item.find()
     .then((foundItems) => {
       if (foundItems.length == 0) {
         //insert in Item collection of todolistDB
