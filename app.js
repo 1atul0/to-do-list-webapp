@@ -51,7 +51,9 @@ const listSchema = new mongoose.Schema({
 //making model for custom route listname
 const List = mongoose.model("List", listSchema);
 
-
+app.get("/err",(req,res)=>{
+  res.render("error");
+})
 
 
 app.get("/", function (req, res) {
